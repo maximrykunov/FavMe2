@@ -1,0 +1,18 @@
+server '<IP>', :web, :app, :db, primary: true
+
+# set :include_www_alias,         false
+set :domain,                    "<DOMAIN>"
+# set :deploy_to,                 "/home/#{ user }/projects/#{ application }_staging"
+# set :unicorn_workers,           3
+# set :use_sudo,                  false
+
+# # use RVM
+set :rvm_ruby_string, '2.0.0'
+set :rake,            "rvm use #{ rvm_ruby_string } do bundle exec rake"
+set :bundle_cmd,      "rvm use #{ rvm_ruby_string } do bundle"
+
+set :rails_env, 'staging'
+
+# # GitHub
+set :branch, 'master'
+# # set :branch, 'faye'

@@ -1,0 +1,11 @@
+h1 = t.site.home.new_meeting
+
+= registration.failure_messages
+
+= simple_form_for(registration.value, url: users_fast_sign_up_path, html: { class: 'form-horizontal' }) do |f|
+  fieldset
+    legend = t.site.home.fast_registration
+    .form-inputs
+      = f.input :email, required: true, input_html: { autofocus: true }
+    .form-actions
+      = f.submit t.actions.sign_up, class: 'btn', data: { disable_with: t.actions.submitting }

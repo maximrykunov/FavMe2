@@ -1,0 +1,18 @@
+activerecord:
+  attributes:
+    user:
+      confirmation_code: код
+      confirmed: подтвержден
+      contacts: контакты
+      created_at: создан
+      current_password: текущий пароль
+      email: эл. адрес
+      name: имя (полное)
+      password: пароль
+      password_confirmation: повтор пароля
+      phone: телефон
+      remember_me: запомнить меня
+      reset_password_token: ключ
+
+  models:
+    user: Пользователь

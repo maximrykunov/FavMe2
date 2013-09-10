@@ -1,0 +1,12 @@
+mailer:
+  perform_deliveries: true
+  smtp:
+    address: 'smtp.gmail.com'
+    authentication: 'plain'
+    domain: 'digsolab.com'
+    enable_starttls_auto: true
+    port: 587
+  url_options:
+    host: 'localhost:3000'
+
+

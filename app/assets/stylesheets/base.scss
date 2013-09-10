@@ -1,0 +1,26 @@
+/*Mixins*/
+@mixin proxima-r {
+  font-family: 'ProximaNova-Regular', sans-serif;
+}
+
+@mixin proxima-a-b {
+  font-family: 'ProximaNovaA-Bold', sans-serif;
+}
+
+@mixin proxima-l {
+  font-family: 'ProximaNova-Light', sans-serif;
+}
+
+@mixin blue-btn {
+  display: block;
+  background: url(../../assets/design/links/blue-btn-bg.png) repeat-x;
+  border-top: 1px solid #89A0C6;
+  border-left: 1px solid #89A0C6;
+  border-right: 1px solid #4A5E7E;
+  border-bottom: 1px solid #4A5E7E;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: #FFF;
+}

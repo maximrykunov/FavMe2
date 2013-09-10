@@ -1,0 +1,15 @@
+site:
+  home:
+    fast_registration: Введите эл. адрес для регистрации.
+    title: FavMe
+    new_meeting: Запланировать встречу
+
+activities:
+  meeting:
+    create:
+      exists: 'создал встречу "%{name}"'
+      not_exist: 'создал встречу которая сейчас удалена'
+    destroy: удалил встречу
+    update:
+      exists: 'обновил встречу "%{name}"'
+      not_exist: 'обновил встречу которая сейчас удалена'

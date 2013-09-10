@@ -1,0 +1,19 @@
+doctype html
+html ng-app="FavMeApp"
+  head
+    title FavMe
+    / meta name="keywords" content="template language"
+    / meta name="author" content=author
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+  body
+    header
+      = render partial: 'layouts/application/header'
+    main#content
+      == alert
+      == notice
+      section
+        == yield
+    footer

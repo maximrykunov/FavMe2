@@ -1,0 +1,14 @@
+p
+  strong ID:
+  = @user.id
+p
+  strong Name:
+  = @user.name
+p
+  strong Email:
+  = @user.email
+
+p
+  | Last 10 activities:
+  = render partial: "activities/activity", collection: @last_activities
+  / = @last_activities.inspect

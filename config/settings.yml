@@ -1,0 +1,18 @@
+assets:
+  precompile:
+    - ie.js
+    - ie/ie7.css
+    - ie/ie8.css
+    - fineuploader.js
+
+emails:
+  main: 'info@FavMe.com'
+
+i18n:
+  available_locales:
+    - ru
+  native_locale: ru
+
+uploads:
+  store_path: '<%= "#{ Rails.public_path }/uploads" %>'
+  temp_path: '<%= "#{ Rails.public_path }/uploads/tmp" %>'

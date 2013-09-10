@@ -1,0 +1,129 @@
+actions:
+  add: Добавить
+  archive: Добавить в архив
+  back: Назад
+  block: Заблокировать
+  cancel: Отменить
+  choose_file: Выбрать файл
+  choose_files: Выбрать файлы
+  close: Закрыть
+  create: Создать
+  destroy: Удалить
+  do_confirm: Подтвердить
+  do_send: Отправить
+  edit: Изменить
+  find: Найти
+  generate_password: Сгенерировать случайный пароль
+  link: Ссылка
+  new_message: Новое сообщение
+  new_record: Новая запись
+  remove: Удалить
+  remove_all: Удалить все
+  save: Сохранить
+  save_as_draft: Сохранить как черновик
+  send: Отправить
+  show: Открыть
+  sign_in: Войти
+  sign_out: Выйти
+  sign_up: Регистрация
+  skip: Пропустить
+  step_vote: Далее
+  submitting: Отправка...
+  unblock: Разблокировать
+  update: Сохранить изменения
+  upload: Загрузить
+  vote: Проголосовать
+
+alerts:
+  access_denied: Доступ запрещен
+
+app:
+  links:
+    contacts: Контакты
+    help: Помощь
+    messages: Сообщения
+    my_profile: Мой профиль
+    events: События
+    profile: Профиль пользователя
+    settings: Настройки
+    social_accounts: Мои соц. аккаунты
+  name: FavMe
+
+errors:
+  messages:
+    # carrierwave_integrity_error: имеет недопустимый формат
+    # carrierwave_processing_error: невозможно обработать
+    # extension_white_list_error: "недопустимый формат файла %{extension}, возможна загрузка только типов: %{allowed_types}"
+    # invalid_date: "имеет неправильный формат даты (yyyy-mm-dd)"
+    # invalid_time: "имеет неправильный формат времени (hh:mm)"
+    # on_or_before: "должна быть не позднее сегодня"
+    choose_variant: выберите вариант
+    fill_only_one: Заполните только одно поле
+    size_too_big: "слишком велик (максимум %{file_size})"
+    size_too_small: "слишком мал (минимум %{file_size})"
+    uniqueness: должен быть уникальным
+    unreadable: Файл отсутствует
+    wrong_size: "неправильный размер (должен быть %{file_size})"
+  page_not_found: !!markdown
+    "# 404\n Страница не найдена"
+  temporarily_unavailable: Сервис временно недоступен
+  unknown: Неизвестная ошибка
+
+events:
+  new_message: Новое сообщение
+
+helpers:
+  i: Я
+  to_me: Мне
+
+labels:
+  actions: действия
+  attachments: Вложения
+  all: все
+  attach: прикрепить
+  not_found: Нет записей
+  found: Найдено
+  please_wait: Подождите...
+  saving: Сохранение...
+
+links:
+  back: Назад
+  further: Далее
+  more: 'подробнее &gt;&gt;'
+  next: Следующий
+  prev: Предыдущий
+  to_list: К списку
+
+main_menu:
+  fundings: Мои складчины
+  groups: Мои группы
+  meetings: Мои встречи
+  polls: Мои опросы
+  tasks: Мои задачи
+
+meta:
+  description: ''
+  keywords: ''
+  title: ''
+
+support:
+  numeric:
+    label: №
+
+titles:
+  edit: '%{model} - редактирование'
+  index: '%{model} - список'
+  new: '%{model} - добавление'
+
+questions:
+  confirm: Вы уверены?
+
+was:
+  added: Запись добавлена
+  blocked: Запись заблокирована
+  confirmed: Запись подтверждена
+  counted: Ваш голос учтён
+  created: Запись создана
+  destroyed: Запись удалена
+  unblocked: Запись разблокирована
+  updated: Запись изменена
