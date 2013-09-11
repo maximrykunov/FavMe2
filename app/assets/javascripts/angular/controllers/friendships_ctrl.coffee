@@ -2,6 +2,8 @@ App.controller 'FriendshipsCtrl', ['$scope', '$dialog', 'Friendship', 'modalDial
   $scope.message = 'test'
   $scope.friendships = Friendship.query()
 
+  $scope.current_tab = 'active'
+
   # dialogOptions =
   #   templateUrl: "/assets/Friendships/edit.html"
 
@@ -26,9 +28,9 @@ App.controller 'FriendshipsCtrl', ['$scope', '$dialog', 'Friendship', 'modalDial
   #   )).open().then (result) ->
   #     $scope.Friendships = Friendship.query()  if result
 
-  # $scope.deleteFriendship = (Friendship, confirmation_text) ->
-  #   if modalDialog.confirm(confirmation_text)
-  #     Friendship.$delete ->
-  #       $scope.Friendships.splice $scope.Friendships.indexOf(Friendship), 1
+  $scope.deleteFriendship = (Friendship, confirmation_text) ->
+    if modalDialog.confirm(confirmation_text)
+      Friendship.$delete ->
+        $scope.friendships.splice $scope.friendships.indexOf(Friendship), 1
 ]
 
