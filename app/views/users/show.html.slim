@@ -8,7 +8,7 @@ p
   strong Email:
   = @user.email
 
-- if @friendship.persisted?
+- if @friendship
   - case @friendship.state
   - when 'active'
     p Вы друзья
@@ -16,6 +16,5 @@ p
     p Вы предложили пользователю дружбу
   - when 'pending'
     p Пользователь предложил вам дружбу
-  
-- else
-  | Стать друзьями
+  - else
+    | Стать друзьями

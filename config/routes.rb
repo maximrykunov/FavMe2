@@ -9,19 +9,13 @@ FavMe::Application.routes.draw do
   # end
   devise_scope :user do
     # resources :users, only: %w(show), constraints: { id: /\d+/ }
-    get '/users/profile' => 'users/registrations#show'
-    get '/users/:id' => 'users/registrations#show'
+    get '/users/profile' => 'users#show'
+    resources :users, only: 'show'
     # get '/users/auth/:provider/callback' => 'users/omniauth_callbacks#passthru'
 
     match 'users/fast_sign_up' => 'users/registrations#fast_sign_up', via: [:get, :post]
   end
-  devise_for :users, controllers: {
-    registrations: 'users/registrations',
-    # confirmations: 'users/confirmations',
-    # sessions: 'users/sessions',
-    # passwords: 'users/passwords',
-    # omniauth_callbacks: 'users/omniauth_callbacks'
-  }
+  devise_for :users
 
   root 'site#home', as: 'home'
 
