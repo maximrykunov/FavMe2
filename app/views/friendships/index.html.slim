@@ -1,0 +1,63 @@
+.wrapper ng-controller="FriendshipsCtrl"
+  h1 Listing friendships
+
+  h1 Message: {{message}}
+
+  / table
+  /   tr
+  /     th
+  /     th
+  /     th
+  /     th
+  /     th
+  /     th
+
+  /   - @friendships.each do |friendship|
+  /     tr
+  /       td = friendship.user_id
+  /       td = friendship.friend_id
+  /       td = friendship.state
+  /       td = link_to 'Show', friendship
+  /       td = link_to 'Edit', edit_friendship_path(friendship)
+  /       td = link_to 'Destroy', friendship, :confirm => 'Are you sure?', :method => :delete
+
+  / br
+
+  / = link_to 'New Friendship', new_friendship_path
+
+
+
+  .container-fluid
+    .row-fluid
+      .span12
+        | Ваши друзья
+        ul.friendships
+          li ng-show="!(friendships | filter:{ state: 'active'}).length" No active friendships
+          li ng-repeat="friendship in friendships | filter:{ state: 'active'}"
+            a href="/users/{{friendship.friend_id}}" {{friendship.id}} {{friendship.user_name}} {{friendship.friend_name}}
+            a ng-click="deletefriendship(friendship, 'Are you absolutely sure you want to delete?')" href="" title="delete"
+              i class="icon-remove"
+        | Запросы дружбы
+        ul.friendships
+          li ng-show="!(friendships | filter:{ state: 'pending'}).length" No pending friendships
+          li ng-repeat="friendship in friendships | filter:{ state: 'pending'}"
+            a href="/users/{{friendship.friend_id}}" {{friendship.id}} {{friendship.user_name}} {{friendship.friend_name}}
+            a href="" title="User ask: {{friendship.message}}"
+              i class="icon-question-sign"
+            a ng-click="confirmfriendship(friendship)" href="" title="Accept request"
+              i class="icon-ok-sign"
+            a ng-click="deletefriendship(friendship, 'Are you absolutely sure you want to delete?')" href="" title="delete"
+              i class="icon-remove"
+        | Ваши запросы
+        ul.friendships
+          li ng-show="!(friendships | filter:{ state: 'request'}).length" No request friendships
+          li ng-repeat="friendship in friendships | filter:{ state: 'request'}"
+            a href="/users/{{friendship.friend_id}}" {{friendship.id}} {{friendship.user_name}} {{friendship.friend_name}}
+            a href="" title="Your request: {{friendship.message}}"
+              i class="icon-question-sign"
+            a ng-click="deletefriendship(friendship, 'Are you absolutely sure you want to delete?')" href="" title="delete"
+              i class="icon-remove"
+    / .row-fluid
+    /   .span12
+    /     button.btn.btn-small ng-click="newfriendship()" New
+    /     button.btn.btn-small ng-click="testFaye()" Test Faye

@@ -1,23 +1,4 @@
-oauth:
-  # google_oauth2:
-  #   app_id: '698416601498.apps.googleusercontent.com'
-  #   app_secret: 'P7v9tP6b5VB-fO2vIFYYyc2x'
-  facebook:
-    app_id: '353396048104849'
-    app_secret: 'bf065e2f830bdcf138a851e3ad70fa68'
-  odnoklassniki:
-    app_id: '165808640'
-    app_secret: '9457379F0D2052867A47D2C1'
-    public_key: 'CBALADOKABABABABA'
-  vkontakte:
-    app_id: '3528000'
-    app_secret: 'JWI7zk45qjuKluiNZbie'
-
 mailer:
   smtp:
     user_name: 'i@d.com'
     password: '!'
-
-faye:
-  host: 'localhost'
-  port: 9292

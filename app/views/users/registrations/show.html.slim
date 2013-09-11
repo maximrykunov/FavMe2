@@ -8,7 +8,14 @@ p
   strong Email:
   = @user.email
 
-p
-  | Last 10 activities:
-  = render partial: "activities/activity", collection: @last_activities
-  / = @last_activities.inspect
+- if @friendship.persisted?
+  - case @friendship.state
+  - when 'active'
+    p Вы друзья
+  - when 'request'
+    p Вы предложили пользователю дружбу
+  - when 'pending'
+    p Пользователь предложил вам дружбу
+  
+- else
+  | Стать друзьями

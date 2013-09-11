@@ -49,35 +49,34 @@ class Generator < Thor
     end
   end
 
-  desc 'gen_contacts', "generate contacts"
-  def gen_contacts
+  desc 'gen_friends', "generate friends"
+  def gen_friends
     require File.expand_path('config/environment.rb')
 
-    User.all(limit: 25).each do |user|
-      p user.id
+    states = %w(active request pending)
 
+    User.all.each do |mem|
+      puts "======================================\n"
+      puts mem.email
+      r = 2+rand(3)
       r = 5+rand(6)
       r.times do
-        friend = User.all(:id.not => user.id).shuffle.first
+        friend = User.where("id <> ?", mem.id).order("RANDOM()").first
         puts "=============\n"
-        unless Contact.first(owner_id: user.id, user_id: friend.id)
-          puts friend.email
-          Contact.create(owner_id: user.id, user_id: friend.id, name: friend.name, email: friend.email)
+        puts friend.email
+        unless Friendship.between_users(mem.id, friend.id).any?
+          state = states[rand(3)]
+          message = Faker::Lorem.sentence
+          puts "=====#{state}"
+          if state == 'pending'
+            f = Friendship.create!(user_id: mem.id, friend_id: friend.id, message: message)
+          else
+            f = Friendship.create!(user_id: friend.id, friend_id: mem.id, message: message)
+          end
+          f.state = state
+          f.save!
         end
-        # unless Friendship.between_users(mem.id, friend.id).any?
-        #   state = states[rand(3)]
-        #   message = Faker::Lorem.sentence
-        #   puts "=====#{state}"
-        #   if state == 'pending'
-        #     f = Friendship.create!(user_id: mem.id, friend_id: friend.id, message: message)
-        #   else
-        #     f = Friendship.create!(user_id: friend.id, friend_id: mem.id, message: message)
-        #   end
-        #   f.state = state
-        #   f.save!
-        # end
       end
-
     end
   end
 

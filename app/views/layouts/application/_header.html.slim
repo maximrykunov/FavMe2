@@ -9,6 +9,8 @@ nav
               li
                 = link_to 'Profile', users_profile_path
               li
+                = link_to 'Friends', friendships_path
+              li
                 = link_to 'Sign out', destroy_user_session_path, method: 'delete'
             - else
               li

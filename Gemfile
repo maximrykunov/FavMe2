@@ -28,7 +28,6 @@ gem 'jquery-rails'
 
 # AngularJS
 gem 'angularjs-rails'
-# gem "angular-faye-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
@@ -97,10 +96,6 @@ gem 'rails_config'
 
 # Async services
 gem 'sucker_punch', '~> 1.0'
-gem 'faye'
-
-# Zoo =)
-gem 'monadic'
 
 # Replacement for select boxes
 gem 'select2-rails'

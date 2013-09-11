@@ -1,6 +1,8 @@
 FavMe::Application.routes.draw do
 
 
+  resources :friendships
+
   # Users
   # authenticated :user do
   #   root 'meetings#index'
@@ -8,6 +10,7 @@ FavMe::Application.routes.draw do
   devise_scope :user do
     # resources :users, only: %w(show), constraints: { id: /\d+/ }
     get '/users/profile' => 'users/registrations#show'
+    get '/users/:id' => 'users/registrations#show'
     # get '/users/auth/:provider/callback' => 'users/omniauth_callbacks#passthru'
 
     match 'users/fast_sign_up' => 'users/registrations#fast_sign_up', via: [:get, :post]

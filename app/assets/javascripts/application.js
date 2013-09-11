@@ -20,7 +20,6 @@
 //= require angular/angular
 //= require angular/angular-resource.min
 //= require angular/ui-bootstrap-tpls-0.5.0
-//= require angular/angular-faye
 
 //= require_tree ./app
 //= require_tree ./angular

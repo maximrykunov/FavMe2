@@ -6,13 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  store_accessor :properties,
-    :receive_messages,
-    :receive_invites,
-    :receive_notifications,
-    :show_email
-
-
   # ----------------------------------------------------------------------------
   # Relations.
   # ----------------------------------------------------------------------------
@@ -24,5 +17,11 @@ class User < ActiveRecord::Base
 
   has_many :activities, inverse_of: :user
   has_many :events
+
+  # frindship section
+  has_many :friendships, dependent: :destroy
+  has_many :friends, through: :friendships
+  has_many :inverse_friendships, class_name: "Friendship", foreign_key: "friend_id", dependent: :destroy
+  has_many :inverse_friends, through: :inverse_friendships, source: :user
 
 end
