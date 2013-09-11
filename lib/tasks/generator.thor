@@ -69,11 +69,15 @@ class Generator < Thor
           message = Faker::Lorem.sentence
           puts "=====#{state}"
           if state == 'pending'
-            f = Friendship.create!(user_id: mem.id, friend_id: friend.id, message: message)
+            f = Friendship.create!(user_id: mem.id, friend_id: friend.id, message: message, state: 'pending')
+            f = Friendship.create!(user_id: friend.id, friend_id: mem.id, message: message, state: 'request')
+          elsif state == 'request'
+            f = Friendship.create!(user_id: mem.id, friend_id: friend.id, message: message, state: 'request')
+            f = Friendship.create!(user_id: friend.id, friend_id: mem.id, message: message, state: 'pending')
           else
-            f = Friendship.create!(user_id: friend.id, friend_id: mem.id, message: message)
+            f = Friendship.create!(user_id: friend.id, friend_id: mem.id, message: message, state: state)
+            f = Friendship.create!(user_id: mem.id, friend_id: friend.id, message: message, state: state)
           end
-          f.state = state
           f.save!
         end
       end

@@ -2,8 +2,7 @@ class Friendship < ActiveRecord::Base
 
   validates_presence_of :user_id, :friend_id
 
-  # scope :by_user, order { users.email }
-  scope :ordered, order { users.email }
+  # scope :ordered, -> { order { users.email } }
 
   # ----------------------------------------------------------------------------
   # Relations.
@@ -16,15 +15,28 @@ class Friendship < ActiveRecord::Base
   # ----------------------------------------------------------------------------
 
   def self.by_state(state)
-    scoped.where(state: state)
+    where(state: state)
   end
 
   def self.for_user(user_id)
-    scoped.where("user_id = :user_id OR friend_id = :user_id", user_id: user_id)
+    where("user_id = :user_id OR friend_id = :user_id", user_id: user_id)
   end
 
+  # def self.between_users(user_id, friend_id)
+  #   where("(user_id = :user_id AND friend_id = :friend_id) OR (user_id = :friend_id AND friend_id = :user_id)", user_id: user_id, friend_id: friend_id)
+  # end
+
   def self.between_users(user_id, friend_id)
-    scoped.where("(user_id = :user_id AND friend_id = :friend_id) OR (user_id = :friend_id AND friend_id = :user_id)", user_id: user_id, friend_id: friend_id)
+    where("user_id = :user_id AND friend_id = :friend_id", user_id: user_id, friend_id: friend_id)
+  end
+
+  def self.accept(user_id, friend_id)
+    transaction do
+      between_users(user_id, friend_id).first.update({ message: nil, state: 'active'})
+      between_users(friend_id, user_id).first.update({ message: nil, state: 'active'})
+      return true
+    end
+    return false
   end
 
   # ----------------------------------------------------------------------------

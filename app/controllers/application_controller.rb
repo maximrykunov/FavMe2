@@ -41,7 +41,7 @@ protected
     # 'inner'
   end
 
-  def respond_with_errors(errors)
+  def respond_with_errors(errors = nil)
     render json: {errors: errors}, status: :bad_request
   end
 end

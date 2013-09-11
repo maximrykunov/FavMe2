@@ -3,30 +3,6 @@
 
   h1 Message: {{message}}
 
-  / table
-  /   tr
-  /     th
-  /     th
-  /     th
-  /     th
-  /     th
-  /     th
-
-  /   - @friendships.each do |friendship|
-  /     tr
-  /       td = friendship.user_id
-  /       td = friendship.friend_id
-  /       td = friendship.state
-  /       td = link_to 'Show', friendship
-  /       td = link_to 'Edit', edit_friendship_path(friendship)
-  /       td = link_to 'Destroy', friendship, :confirm => 'Are you sure?', :method => :delete
-
-  / br
-
-  / = link_to 'New Friendship', new_friendship_path
-
-
-
   .container-fluid
     .row-fluid
       .span12
@@ -54,7 +30,7 @@
                   a href="/users/{{friendship.friend_id}}" {{friendship.friend_name}}
                   a href="" title="User ask: {{friendship.message}}"
                     i class="icon-question-sign"
-                  a ng-click="confirmfriendship(friendship)" href="" title="Accept request"
+                  a ng-click="confirmFriendship(friendship)" href="" title="Accept request"
                     i class="icon-ok-sign"
                   a ng-click="deleteFriendship(friendship, 'Are you absolutely sure you want to delete?')" href="" title="delete"
                     i class="icon-remove"
@@ -63,6 +39,10 @@
                 li ng-show="!(friendships | filter:{ state: 'request'}).length" No request friendships
                 li ng-repeat="friendship in friendships | filter:{ state: 'request'}"
                   a href="/users/{{friendship.friend_id}}" {{friendship.friend_name}}
+                  / remove
+                  a ng-click="confirmFriendship(friendship)" href="" title="Accept request"
+                    i class="icon-ok-sign"
+                  / remove
                   a href="" title="Your request: {{friendship.message}}"
                     i class="icon-question-sign"
                   a ng-click="deleteFriendship(friendship, 'Are you absolutely sure you want to delete?')" href="" title="delete"
@@ -71,3 +51,28 @@
     /   .span12
     /     button.btn.btn-small ng-click="newfriendship()" New
     /     button.btn.btn-small ng-click="testFaye()" Test Faye
+
+  / table
+  /   tr
+  /     th
+  /     th
+  /     th
+  /     th
+  /     th
+  /     th
+
+  /   - @friendships.each do |friendship|
+  /     tr
+  /       td = friendship.user_id
+  /       td = friendship.friend_id
+  /       td = friendship.state
+  /       td = link_to 'Show', friendship
+  /       td = link_to 'Edit', edit_friendship_path(friendship)
+  /       td = link_to 'Destroy', friendship, :confirm => 'Are you sure?', :method => :delete
+
+  / br
+
+  / = link_to 'New Friendship', new_friendship_path
+
+
+

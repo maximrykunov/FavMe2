@@ -5,7 +5,8 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
   def index
-    @friendships = Friendship.for_user(current_user).all
+    # @friendships = Friendship.for_user(current_user)
+    @friendships = current_user.friendships
  
     respond_with(@contacts) do |format|
       format.json
@@ -46,14 +47,14 @@ class FriendshipsController < ApplicationController
   # PATCH/PUT /friendships/1
   # PATCH/PUT /friendships/1.json
   def update
-    respond_to do |format|
-      if @friendship.update(friendship_params)
-        format.html { redirect_to @friendship, notice: 'Friendship was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @friendship.errors, status: :unprocessable_entity }
-      end
+    p @friendship.inspect
+    if params[:state] == 'confirm' &&
+        @friendship.state == 'pending' &&
+        @friendship.user_id == current_user.id &&
+        Friendship.accept(current_user.id, @friendship.friend_id)
+      respond_with @friendship
+    else
+      respond_with_errors
     end
   end
 
@@ -76,6 +77,6 @@ class FriendshipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def friendship_params
-      params[:friendship]
+      params[:friendship].permit(:message, :state)
     end
 end

@@ -2,7 +2,7 @@ App.controller 'FriendshipsCtrl', ['$scope', '$dialog', 'Friendship', 'modalDial
   $scope.message = 'test'
   $scope.friendships = Friendship.query()
 
-  $scope.current_tab = 'active'
+  $scope.current_tab = 'pending'
 
   # dialogOptions =
   #   templateUrl: "/assets/Friendships/edit.html"
@@ -27,6 +27,14 @@ App.controller 'FriendshipsCtrl', ['$scope', '$dialog', 'Friendship', 'modalDial
   #     controller: "NewFriendshipCtrl"
   #   )).open().then (result) ->
   #     $scope.Friendships = Friendship.query()  if result
+
+  $scope.confirmFriendship = (Friendship) ->
+    temp_obj = angular.copy Friendship
+    temp_obj.state = 'confirm'
+    temp_obj.$update ->
+      Friendship.state = 'active'
+      temp_obj = undefined
+      # $scope.message = Friendship.id
 
   $scope.deleteFriendship = (Friendship, confirmation_text) ->
     if modalDialog.confirm(confirmation_text)
